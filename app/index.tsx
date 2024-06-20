@@ -1,6 +1,5 @@
-import { Image, StyleSheet, Platform, TextInput, Button } from "react-native";
+import { Image, StyleSheet, TextInput, Button } from "react-native";
 import { useState, useEffect } from "react";
-import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
@@ -44,11 +43,10 @@ export default function HomeScreen() {
         <ThemedText type="defaultSemiBold">Enter City Name</ThemedText>
         <TextInput
           style={{
-           padding: 10,
+            padding: 10,
             borderColor: "gray",
             borderWidth: 1,
             color: "white",
-
           }}
           onChangeText={(text) => setCity(text)}
           value={city}
@@ -71,7 +69,7 @@ export default function HomeScreen() {
           {town} Weather:
         </ThemedText>
         <ThemedText type="title">
-          {weather.main && weather.main.temp}°C 
+          {weather.main && weather.main.temp}°C
         </ThemedText>
         <ThemedText type="subtitle" style={styles.description}>
           {weather.weather && weather.weather[0].description}
