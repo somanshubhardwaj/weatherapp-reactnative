@@ -4,12 +4,14 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import axios from "axios";
+import { useThemeColor } from "@/hooks/useThemeColor";
 export default function HomeScreen() {
   const api_key: string = "063e54db6553bd372bffc9fee653d5ae";
   const [city, setCity] = useState<string>("delhi");
   const [country_code, setCountry_code] = useState<string>("in");
   const [weather, setWeather] = useState<any>({});
   const [town, setTown] = useState<string>("delhi");
+  const inputtext = useThemeColor({ light: "black", dark: "white" }, 'text');
   const fetchdata = async () => {
     try {
       const res = await axios.get(
@@ -28,7 +30,8 @@ export default function HomeScreen() {
 
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+      headerBackgroundColor={{ light: "#A1CEDC", dark: "#A1CEDC" }}
+      
       headerImage={
         <Image
           source={require("@/assets/images/partial-react-logo.png")}
@@ -46,7 +49,8 @@ export default function HomeScreen() {
             padding: 10,
             borderColor: "gray",
             borderWidth: 1,
-            color: "white",
+            color: inputtext,
+ 
           }}
           onChangeText={(text) => setCity(text)}
           value={city}
@@ -57,10 +61,12 @@ export default function HomeScreen() {
             padding: 10,
             borderColor: "gray",
             borderWidth: 1,
-            color: "white",
+            color: inputtext,
+           
           }}
           onChangeText={(text) => setCountry_code(text)}
           value={country_code}
+          
         />
         <Button title="Search" onPress={fetchdata} />
       </ThemedView>
